@@ -7,6 +7,6 @@ public interface MemberService {
 	 public Member findById(Long id);
 	 public Member save(Member member);
 	 public void deleteById(Long id);
-	 public Object loginMember(String emailID,String password);
+	 public Long loginMember(String emailID,String password);
 
 }

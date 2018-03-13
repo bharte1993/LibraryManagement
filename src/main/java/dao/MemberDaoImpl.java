@@ -40,13 +40,14 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Object loginMember(String emailID, String password) {
+	public Long loginMember(String emailID, String password) {
 		String query="select * from member where emailID='" + emailID + "' and password='" + password+ "'";
 		if(jdbcTemplate.query(query, new MemberMapper())==null) {
-			return "Wrong Password";
+			return null;
 		}
 		else {
-		return jdbcTemplate.query(query, new MemberMapper());
+			    member=(Member)jdbcTemplate.query(query, new MemberMapper());
+		return member.getId();
 	}
 }
 

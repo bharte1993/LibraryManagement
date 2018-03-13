@@ -28,7 +28,7 @@
 			}),
 			success: function(response){     
 				console.log("dataad");
-				 window.location="http://net-informations.com"
+				// window.location="http://net-informations.com"
 	       
 		},
 			error:function(){

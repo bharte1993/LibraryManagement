@@ -14,13 +14,14 @@
 			type: "POST",
 			url: "http://localhost:8080/LibraryManagementSystem/member/login",
 			contentType:"application/json; charset=utf-8",
-			data: JSON.stringify({"expString":$("#display").val()}),
+			data: {"emailID":$("#emailID").val(), "password":$("#password").val()},
 			success: function(response){
 			var myJSON = JSON.stringify(response); 
 			console.log(myJSON);
 			var obj = JSON.parse(myJSON);                  
-	        $('#result1').html("expString:- " + obj.expString +"</br>expMessage:- " + obj.expMessage  + "</br>result:- " + obj.result.Answer+"</br>Error:- " + obj.result.Error);
-	        $('#display').val(obj.result.Answer);
+	        console.log(obj.emailID);
+	        var id =obj.emailID;
+	        window.location.href = "http://localhost:8080/LibraryManagementSystem/member.jsp/id=obj.emailID";
 		},
 			error:function(){
 				console.log("data");
@@ -38,11 +39,11 @@
             <table>
                 <tr>
                     <td>User Name</td>
-                    <td><input type="text" name="userName" /></td>
+                    <td><input type="Email ID" name="emailID" /></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" /></td>
+                    <td><input type="Password" name="password" /></td>
                 </tr>
                 <tr>
                     <td></td>

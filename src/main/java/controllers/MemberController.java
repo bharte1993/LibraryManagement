@@ -63,14 +63,14 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)	  
 	@ResponseBody
-	public Object loginMamber(@RequestParam(value="emailID" ) String emailID , @RequestParam(value="password" ) String password) {
+	public Long loginMamber(@RequestParam(value="emailID" ) String emailID , @RequestParam(value="password" ) String password) {
 		  String Id = "";
 	    try {	    
 	        return memberService.loginMember(emailID, password);
             
 	  }
 	    catch (Exception ex) {
-	      return  ex.toString();
+	      return null;
 	    }
 }
 
