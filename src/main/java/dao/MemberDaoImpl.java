@@ -1,4 +1,8 @@
 package dao;
+
+
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
@@ -40,17 +44,13 @@ public class MemberDaoImpl implements MemberDao {
 	}
 
 	@Override
-	public Long loginMember(String emailID, String password) {
-		String query="select * from member where emailID='" + emailID + "' and password='" + password+ "'";
-		if(jdbcTemplate.query(query, new MemberMapper())==null) {
-			return null;
-		}
-		else {
-			    member=(Member)jdbcTemplate.query(query, new MemberMapper());
-		return member.getId();
+	public Object loginMember(String emailID, String password) {
+		String query="select * from member where emailID='" + emailID + "' and password='" + password + "'";
+		return jdbcTemplate.query(query, new MemberMapper());
 	}
+		 
 }
 
 
 
-}
+

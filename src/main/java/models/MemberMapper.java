@@ -16,8 +16,8 @@ public class MemberMapper  implements RowMapper<Member> {
 		 member.setMemberId(rs.getLong("memberId"));
 		 member.setMemberType(rs.getString("memberType"));
 		 member.setMemberAge(rs.getLong("memberAge"));
-		 member.setMemberAge(rs.getLong("emailID"));
-		 member.setMemberAge(rs.getLong("password"));
+		 member.setEmailID(rs.getString("emailID"));
+		 member.setPassword(rs.getString("password"));
 		 return member;
 	   }
 }

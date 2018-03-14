@@ -24,11 +24,12 @@
 			"memberAge":$("#memberAge").val(),
 			"password":$("#password").val(),
 			"emailID":$("#emailID").val()
-	
-			}),
+	       }),
 			success: function(response){     
+				var myJSON = JSON.stringify(response); 
+				console.log(myJSON);
 				console.log("dataad");
-				// window.location="http://net-informations.com"
+				window.location="Login.jsp"
 	       
 		},
 			error:function(){
@@ -45,7 +46,7 @@
 
   <body>
 
-  <form action="#" >
+
 
 
 <table cellpadding="2" width="20%" bgcolor="99FFFF" align="center"
@@ -159,7 +160,7 @@
 
   </table>
 
-  </form>
+
 
   </body>
 

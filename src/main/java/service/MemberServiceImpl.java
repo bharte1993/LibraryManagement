@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public Long loginMember(String emailID, String password) {
+	public Object loginMember(String emailID, String password) {
 		// TODO Auto-generated method stub
 		return memberdao.loginMember( emailID, password);
 	}

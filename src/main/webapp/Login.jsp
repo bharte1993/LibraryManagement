@@ -9,23 +9,38 @@
  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>
    function memberLogin() {
+	     
+	    var email = $('#emailID').val();  
+	    var pass = $('#password').val();  
+	    console.log(email);
+	    console.log(pass);
 		
 		$.ajax({
 			type: "POST",
 			url: "http://localhost:8080/LibraryManagementSystem/member/login",
-			contentType:"application/json; charset=utf-8",
-			data: {"emailID":$("#emailID").val(), "password":$("#password").val()},
+			data:"emailID=" + email + "&password=" + pass ,  
 			success: function(response){
 			var myJSON = JSON.stringify(response); 
 			console.log(myJSON);
-			var obj = JSON.parse(myJSON);                  
-	        console.log(obj.emailID);
-	        var id =obj.emailID;
-	        window.location.href = "http://localhost:8080/LibraryManagementSystem/member.jsp/id=obj.emailID";
+			var obj = JSON.parse(myJSON);  
+		
+			console.log(obj.length);
+			if(obj.length===0){
+				 window.location.href = "Login.jsp";
+			}
+			if(obj.length>0){
+			 id1=obj[0].id;
+			
+			if(id1===1994){
+				 window.location.href = "http://localhost:8080/LibraryManagementSystem/librarian.jsp?id="+id1;
+			}
+			if(id1===1993)
+	       window.location.href = "http://localhost:8080/LibraryManagementSystem/member.jsp?id="+id1;
+		  }
 		},
 			error:function(){
-				console.log("data");
-	                	 alert('Error while request..');
+				     console.log("data");
+	                	 alert('Wrong Password');
 			}
 		});
 	}
@@ -33,17 +48,17 @@
   </script>
 </head>
 <body>
-    <form:form name="submitForm" method="POST">
+  
     
         <div align="center">
             <table>
                 <tr>
-                    <td>User Name</td>
-                    <td><input type="Email ID" name="emailID" /></td>
+                    <td>Email ID</td>
+                    <td><input type="text" name="emailID" id="emailID" /></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="Password" name="password" /></td>
+                    <td><input type="Password" name="password" id="password" /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -52,7 +67,8 @@
                 </tr>
             </table>
             <div style="color: red">${error}</div>
+           
         </div>
-    </form:form>
+  
 </body>
 </html>

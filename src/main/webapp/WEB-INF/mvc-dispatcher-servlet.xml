@@ -14,7 +14,7 @@
    
    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
       <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />  
-      <property name="url" value="jdbc:oracle:thin:@192.9.200.87:1521:orcl11g" />  
+      <property name="url" value="jdbc:oracle:thin:@192.9.200.200:1521:winorcldb" />  
       <property name="username" value="Library" />  
       <property name="password" value="winsoft" />  
    </bean> 

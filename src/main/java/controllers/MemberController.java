@@ -63,9 +63,11 @@ public class MemberController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)	  
 	@ResponseBody
-	public Long loginMamber(@RequestParam(value="emailID" ) String emailID , @RequestParam(value="password" ) String password) {
-		  String Id = "";
-	    try {	    
+	public Object loginMamber(@RequestParam(value="emailID" ) String emailID , @RequestParam(value="password" ) String password) {
+		
+	    try {	
+	    	System.out.print("in");
+	    	System.out.println(memberService.loginMember(emailID, password));
 	        return memberService.loginMember(emailID, password);
             
 	  }
