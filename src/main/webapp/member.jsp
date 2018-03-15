@@ -10,6 +10,8 @@
 
         <h>Welcome to Library Management System</h>
         <%= request.getParameter("id") %>
+         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+         <script src="${pageContext.request.contextPath}/resources/js/member.js"></script>
        </head>
        <script>  </script>
 
@@ -17,13 +19,13 @@
     <h> welcome member <h>
     <table>
                 <tr>
-                    <td>Search All Books</td>
-                    <td><input type="button" value ="Search" onclick="" /></td>
+                   
+                    <td><input type="button" value ="Search All Books" onclick="searchBooks()" /></td>
                 </tr>
                 <tr>
                     <td>Search Books By ID</td>
-                    <td><input type="text" name="id" id="id" /></td>
-                    <td><input type="button" value ="Search" onclick="" /></td>
+                    <td><input type="text" name="id" id="bid" /></td>
+                    <td><input type="button" value ="Search" onclick="searchBookByID()" /></td>
                 </tr>
                 <tr>
                     <td>Issue Book</td>

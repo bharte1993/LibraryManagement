@@ -28,7 +28,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping("/{id}")
+	@RequestMapping("id/{id}")
 	public Member getMember(@PathVariable("id") Long id) {
 		return memberService.findById(id);
 		
@@ -48,7 +48,7 @@ public class MemberController {
 	    }
     return  Id;
 }
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)	  
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)	  
 	@ResponseBody
 	public String deleteByid(@PathVariable("id") Long id) {
 	

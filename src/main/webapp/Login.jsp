@@ -23,20 +23,21 @@
 			var myJSON = JSON.stringify(response); 
 			console.log(myJSON);
 			var obj = JSON.parse(myJSON);  
-		
-			console.log(obj.length);
+		    console.log(obj.length);
 			if(obj.length===0){
 				 window.location.href = "Login.jsp";
 			}
 			if(obj.length>0){
-			 id1=obj[0].id;
+			var membertype=obj[0].memberType;
+			var id1=obj[0].id;
 			
-			if(id1===1994){
+			if(membertype==="librarian"){
 				 window.location.href = "http://localhost:8080/LibraryManagementSystem/librarian.jsp?id="+id1;
 			}
-			if(id1===1993)
-	       window.location.href = "http://localhost:8080/LibraryManagementSystem/member.jsp?id="+id1;
-		  }
+			if(membertype==="member"){
+	         window.location.href = "http://localhost:8080/LibraryManagementSystem/member.jsp?id="+id1;
+		     }
+			}	
 		},
 			error:function(){
 				     console.log("data");

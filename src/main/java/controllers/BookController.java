@@ -25,7 +25,7 @@ public class BookController {
 		return bookService.findAll();
 	}
 	
-	@RequestMapping("id/{id}")
+	@RequestMapping(value="id/{id}", method=RequestMethod.GET)
 	public Books getMember(@PathVariable("id") Long id) {
 		return bookService.findById(id);
 	}
