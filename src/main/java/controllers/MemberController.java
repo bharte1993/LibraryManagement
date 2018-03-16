@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import models.Books;
 import models.Member;
 import service.MemberService;
 
@@ -75,6 +76,34 @@ public class MemberController {
 	      return null;
 	    }
 }
+	@RequestMapping(value = "/update", method = RequestMethod.POST)	  
+	@ResponseBody
+	public String updateMember(@RequestBody Member member  ) {
+	
+		   try {	    
+		       
+			   memberService.updateMember(member);
+		  
+		    }
+		    catch (Exception ex) {
+		      return  ex.toString();
+		    }
+		   return  "update";
+	}
+	@RequestMapping(value = "/updatePass", method = RequestMethod.POST)	  
+	@ResponseBody
+	public String updatepassMember(@RequestBody Member member  ) {
+	
+		   try {	    
+		       
+			   memberService.updatepassMember(member);
+		  
+		    }
+		    catch (Exception ex) {
+		      return  ex.toString();
+		    }
+		   return  "updatepass";
+	}
 
 
 }

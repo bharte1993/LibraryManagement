@@ -1,9 +1,9 @@
 
        
        function searchBooks() {
-    	   document.getElementById("myDIV3").style.display = "none";
-    	   document.getElementById("myDIV").style.display = "block";
-    	   document.getElementById("myDIV1").style.display = "none";
+    	    $(".hide").hide();
+    	    document.getElementById("myDIV").style.display = "block";
+    	 
   	     $.ajax({
    			type: "GET",
    			url: "http://localhost:8080/LibraryManagementSystem/books/all",
@@ -25,9 +25,8 @@
    		});
    	}
        function searchMember() {
+    	   $(".hide").hide();
     	   document.getElementById("myDIV3").style.display = "block";
-    	   document.getElementById("myDIV").style.display = "none";
-    	   document.getElementById("myDIV1").style.display = "none";
       		$.ajax({
       			type: "GET",
       			url: "http://localhost:8080/LibraryManagementSystem/member/all",
@@ -50,7 +49,7 @@
       		});
       	}
        function addBook() {
-    	  
+    	   $(".hide").hide();
     	   document.getElementById("myDIV1").style.display = "none";
   	     $.ajax({
      			type: "PUT",
@@ -80,9 +79,9 @@
      		});
      	}
        function searchBookByID() {
+    	   $(".hide").hide();
     	   document.getElementById("myDIV").style.display = "block"; 
-    	   document.getElementById("myDIV1").style.display = "none";
-    	   document.getElementById("myDIV3").style.display = "none";
+    	  
     	    var id1 = $('#bid').val(); 
     	    $.ajax({
     			type: "GET",
@@ -104,9 +103,9 @@
     		});
     	}
        function searchMemberByID() {
+    	   $(".hide").hide();
     	   document.getElementById("myDIV3").style.display = "block";
-    	   document.getElementById("myDIV1").style.display = "none";
-    	   document.getElementById("myDIV").style.display = "none"; 
+    	
       	    var id1 = $('#mid').val(); 
    		
    		$.ajax({
@@ -130,6 +129,7 @@
    		});
    	}
        function deleteMemberByID() {
+    	   $(".hide").hide();
      	    var id1 = $('#dmid').val(); 
      	    
     		console.log(id1);
@@ -151,6 +151,7 @@
       		});
       	}
        function deleteBookByID() {
+    	$(".hide").hide();
    	    var id1 = $('#dbid').val(); 
   		
   		$.ajax({
@@ -171,11 +172,144 @@
   		});
   	}
        function addnewBook() {
+    	   $(".hide").hide();
     	   document.getElementById("myDIV1").style.display = "block";
-    	   document.getElementById("myDIV").style.display = "none";
-    	   document.getElementById("myDIV3").style.display = "none";
+    	  
        }
-
+       function updatebookByID() {
+    	   $(".hide").hide();
+    	   document.getElementById("myDIV2").style.display = "block";
+    	 
+    	   var id1 = $('#ubid').val(); 
+    	   console.log(id1);
+   	    $.ajax({
+   			type: "GET",
+   			url: "http://localhost:8080/LibraryManagementSystem/books/id/"+id1,
+   			data:"id=" + id1, 
+   			success: function(response){
+   			var myJSON = JSON.stringify(response); 
+   			console.log(myJSON);
+   			var obj = JSON.parse(myJSON); 
+   		    $('#bookId').val(obj.bookId);
+   		    $('#bookName').val(obj.bookName);
+   		    $('#bookPublisher').val(obj.bookPublisher);
+   		    $('#bookAuthor').val(obj.bookAuthor); 
+   		    $('#bookType').val(obj.bookType);
+   		    $('#bookAvailablity').val(obj.bookAvailablity);
+   		  
+   	   		
+   		},
+   			error:function(){
+   				     console.log("data");
+   	                	 alert('Wrong ID');
+   			}
+   		});
+     		
+     		
+     	}
+     
+       function updatebook() {
+    	   document.getElementById("myDIV2").style.display = "none";
+    	     $.ajax({
+       			type: "POST",
+       			url: "http://localhost:8080/LibraryManagementSystem/books/update",
+       			contentType:"application/json; charset=utf-8",
+       			data: JSON.stringify({"bookId":$("#bookId").val(),
+       				"bookName":$("#bookName").val(),
+       				"bookPublisher":$("#bookPublisher").val(),
+       				"bookAuthor":$("#bookAuthor").val(),
+       				"bookType":$("#bookType").val(),
+       				"bookAvailablity":$("#bookAvailablity").val(),
+       		
+       		       }),  
+       		       
+      
+       			success: function(response){
+       			var myJSON = JSON.stringify(response); 
+       			console.log(myJSON);
+       			var obj = JSON.parse(myJSON);  
+       		    alert('Update');
+       		
+       		  
+       		},
+       			error:function(){
+       	 		
+       				     console.log("data");
+       	                 alert('Wrong Data');
+       			}
+       		});
+     		
+     	}
+       function updatememberByID() {
+    	   $(".hide").hide();
+    	   document.getElementById("myDIV4").style.display = "block";
+    	
+    	   var id1 = $('#umid').val(); 
+    	   console.log(id1);
+   	    $.ajax({
+   			type: "GET",
+   			url: "http://localhost:8080/LibraryManagementSystem/member/id/"+id1,
+   			data:"id=" + id1, 
+   			success: function(response){
+   			var myJSON = JSON.stringify(response); 
+   			console.log(myJSON);
+   			var obj = JSON.parse(myJSON); 
+   		    $('#id').val(obj.id);
+   		    $('#firstName').val(obj.firstName);
+   		    $('#lastName').val(obj.lastName);
+   		    $('#address').val(obj.address); 
+   		    $('#phoneNo').val(obj.phoneNo);
+   		    $('#memberType').val(obj.memberType);
+   		    $('#memberAge').val(obj.memberAge);
+   		    $('#memberId').val(obj.memberId);
+   		  
+   		 
+   		  
+   	   		
+   		},
+   			error:function(){
+   				     console.log("data");
+   	                	 alert('Wrong ID');
+   			}
+   		});
+     		
+     		
+     	}
+       function updatemember() {
+    	   document.getElementById("myDIV4").style.display = "none";
+    	     $.ajax({
+       			type: "POST",
+       			url: "http://localhost:8080/LibraryManagementSystem/member/update",
+       			contentType:"application/json; charset=utf-8",
+       			data: JSON.stringify({"id":$("#id").val(),
+       				"firstName":$("#firstName").val(),
+       				"lastName":$("#lastName").val(),
+       				"address":$("#address").val(),
+       				"phoneNo":$("#phoneNo").val(),
+       				"memberType":$("#memberType").val(),
+       				"memberAge":$("#memberAge").val(),
+       				"memberId":$("#memberId").val(),
+       		
+       		       }),  
+       		       
+      
+       			success: function(response){
+       			var myJSON = JSON.stringify(response); 
+       			console.log(myJSON);
+       			var obj = JSON.parse(myJSON);  
+       		    alert('Update');
+       		
+       		  
+       		},
+       			error:function(){
+       	 		
+       				     console.log("data");
+       	                 alert('Wrong Data');
+       			}
+       		});
+     		
+     	}
+     
      
 
       

@@ -7,6 +7,8 @@ public interface BookService {
 	 public Books findById(Long id);
 	 public Books save(Books Book);
 	 public void deleteById(Long id);
+	 public void updateBook( Books book);
+
 
 
 }

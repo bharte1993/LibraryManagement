@@ -1,8 +1,4 @@
 package dao;
-
-
-import java.util.List;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 
 
@@ -47,6 +43,20 @@ public class MemberDaoImpl implements MemberDao {
 	public Object loginMember(String emailID, String password) {
 		String query="select * from member where emailID='" + emailID + "' and password='" + password + "'";
 		return jdbcTemplate.query(query, new MemberMapper());
+	}
+
+	@Override
+	public void updateMember(Member member) {
+		String query="UPDATE member SET id= '" +member.getId() +"' , firstName= '" +member.getFirstName() +"', lastName= '" +member.getLastName() +"', address= '" +member.getAddress() +"', phoneNo= '" +member.getPhoneNo() +"', memberId= '" +member.getMemberId()+"', memberType= '" +member.getMemberType()+"', memberAge= '" +member.getMemberAge()+"'WHERE id="+member.getId()+"";
+		jdbcTemplate.update(query); 
+		
+	}
+	@Override
+	public void updatepassMember(Member member) {
+		System.out.print(member.getPassword());
+		String query="UPDATE member SET id= '" +member.getId() +"' , firstName= '" +member.getFirstName() +"', lastName= '" +member.getLastName() +"', address= '" +member.getAddress() +"', phoneNo= '" +member.getPhoneNo() +"', memberId= '" +member.getMemberId()+"', memberType= '" +member.getMemberType()+"', memberAge= '" +member.getMemberAge()+"', password= '" +member.getPassword()+"', emailID= '" +member.getEmailID()+"'WHERE id="+member.getId()+"";
+		jdbcTemplate.update(query); 
+		
 	}
 		 
 }

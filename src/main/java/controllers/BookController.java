@@ -61,6 +61,20 @@ public class BookController {
 		    }
 		   return  "ok";
 	}
+	@RequestMapping(value = "/update", method = RequestMethod.POST)	  
+	@ResponseBody
+	public String updateBook(@RequestBody Books book  ) {
+	
+		   try {	    
+		       
+			   bookService.updateBook(book);
+		  
+		    }
+		    catch (Exception ex) {
+		      return  ex.toString();
+		    }
+		   return  "update";
+	}
 
 
 }

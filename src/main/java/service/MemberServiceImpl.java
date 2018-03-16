@@ -36,5 +36,16 @@ public class MemberServiceImpl implements MemberService{
 		return memberdao.loginMember( emailID, password);
 	}
 
+	@Override
+	public void updateMember(Member member) {
+		memberdao.updateMember(member);
+		
+	}
+	@Override
+	public void updatepassMember(Member member) {
+		memberdao.updatepassMember(member);
+		
+	}
+
 
 }

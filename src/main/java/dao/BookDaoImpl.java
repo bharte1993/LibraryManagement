@@ -40,6 +40,14 @@ public class BookDaoImpl implements BookDao {
 		
 	}
 
+
+	@Override
+	public void updateBook(Books book) {
+		String query="UPDATE books SET bookId= '" +book.getBookId() +"' , bookName= '" +book.getBookName() +"', bookPublisher= '" +book.getBookPublisher() +"', bookAuthor= '" +book.getBookAuthor() +"', bookType= '" +book.getBookType() +"', bookAvailablity= '" +book.getBookAvailablity() +"'WHERE bookId="+book.getBookId()+"";
+		jdbcTemplate.update(query);  
+	
+	}
+
 }
 //public Student getStudent(Integer id) {
 //    String SQL = "select * from Student where id = ?";
